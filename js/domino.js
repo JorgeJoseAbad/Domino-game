@@ -36,13 +36,26 @@ function Dominobox(options) {
 
 // barajar las fichas
 Domino.prototype.shuffle = function () {
-  this.sort(function(a, b){
+  this.body.sort(function(a, b){
     return 0.5 - Math.random();
   });
 };
 
 
-//coger una fichas
+//coger una ficha del principio, para comprobr por ejemplo
 Domino.prototype.getDomino= function(){
-  this.pop();
+  this.body.shift();
 };
+
+//dejar una ficha al final
+Domino.prototype.letDomino = function () {
+  this.body.push(item);
+};
+
+//Comprobar numero de una ficha retorna true si el numero buscado esta
+//no esto lo hara el juego
+/*Domino.prototype.checkNumber=function(number){
+  this.body.(function(number)){
+    return (item.number1===number || item.number2===number);
+  };
+};*/
