@@ -1,0 +1,28 @@
+.boardTable {
+  height: 800px;
+  margin: 30px auto;
+  width: 800px;
+}
+
+.player{
+  height: 100px;
+  margin: 30px auto;
+  width: 800px;
+}
+
+.cell {
+  background-size: contain;
+  box-sizing: border-box;
+  float: left;
+  height: 16px;
+  width: 16px;
+}
+
+
+.board {
+  background-color: #E3D4AB;
+}
+
+.domino {
+  background-color: #95BE69;
+}

@@ -1,4 +1,7 @@
 // hay 28 fichas en una caja o conjuto arrqy de fichas:
+//permite barajar las fichas en la caja
+//permite tomar una ficha del comienzo
+//permite poner una ficha al final
 
 function Dominobox(options) {
   //posicion inicial ordenada de las fichas de domino en la caja
@@ -34,8 +37,13 @@ function Dominobox(options) {
       ];
 }
 
+var dominobox = new Dominobox({
+
+});
+
+
 // barajar las fichas
-Domino.prototype.shuffle = function () {
+Dominobox.prototype.shuffle = function () {
   this.body.sort(function(a, b){
     return 0.5 - Math.random();
   });
@@ -43,12 +51,12 @@ Domino.prototype.shuffle = function () {
 
 
 //coger una ficha del principio, para comprobr por ejemplo
-Domino.prototype.getDomino= function(){
+Dominobox.prototype.getDomino= function(){
   this.body.shift();
 };
 
 //dejar una ficha al final
-Domino.prototype.letDomino = function () {
+Dominobox.prototype.letDomino = function () {
   this.body.push(item);
 };
 
