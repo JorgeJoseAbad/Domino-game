@@ -33,6 +33,8 @@ function GameDomino(options) {
   //this.player2.startPlayer();
   this.giveDominoes();
   //this.giveDominoes();
+  this.search66();
+  this.makeTurn();
 
 
 }
@@ -52,8 +54,32 @@ console.log("hola");
 
 };
 
-//GameDomino.prototipe.search66=function(){
+//determina si hay un 6 doble al comienzo OK
+GameDomino.prototype.search66 = function(){
+if (this.player1.searchNumber(6,6)) {
+  console.log("empieza 1");
+}
+  else if (this.player2.searchNumber(6,6)) {
+    console.log("empieza2");
+    this.player1.turn=false;
+    this.player2.turn=true;
+  } else console.log("no hay 6 doble, empieza 1");
 
+};
+
+
+//segun el turno jugador pone ficha en tabla en posicion central
+GameDomino.prototype.makeTurn=function(){
+  if (this.player2.turn===true){
+    this.player2.placeDominoInBoard(this.board,50,50,51,50);
+  }
+  else if (this.player1.turn===true){
+    this.player1.placeDominoInBoard(this.board,50,50,51,50);
+  }
+};
+
+
+/*a partir de ahora seria el desarrollo normal del juego*/
 
 
 

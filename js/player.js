@@ -36,6 +36,26 @@ Player.prototype.startPlayer=function(dominobox){
   return this.body;
 };
 
+Player.prototype.searchNumber = function(a,b){
+  for (i=0;i<this.body.length;i++){
+  if (this.body[i].number1===a && this.body[i].number2===b){
+    return true;
+  }
+}
+  return false;
+};
+
+
+//jugador pone domino en la mesa
+Player.prototype.placeDominoInBoard=function(board,r1,c1,r2,c2){
+  var shifted = this.body.shift();
+  shifted.number1Pos.row=r1;
+  shifted.number1Pos.column=c1;
+  shifted.number2Pos.row=r2;
+  shifted.number2Pos.column=c2;
+  board.domino.unshift(shifted);
+  return board.domino;
+};
 
 
 /*Player.prototipe.checkDomino=function (domino){
