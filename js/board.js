@@ -10,11 +10,11 @@ function Board(options) {
   this.domino  = options.domino;
 
 
-
+//para dar formato a la tabla
   for (var rowIndex = 0; rowIndex < options.rows; rowIndex++){
     for (var columnIndex = 0; columnIndex < options.columns; columnIndex++){
       $('.boardTable').append($('<div>')
-        .addClass('cell board')
+        .addClass('cell-board')
         .attr('data-row', rowIndex)
         .attr('data-col', columnIndex)
       );

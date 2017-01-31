@@ -2,6 +2,8 @@
   height: 800px;
   margin: 30px auto;
   width: 800px;
+  background-color: red;
+
 }
 
 .player{
@@ -10,12 +12,13 @@
   width: 800px;
 }
 
-.cell {
+.cell-board {
   background-size: contain;
   box-sizing: border-box;
   float: left;
   height: 16px;
   width: 16px;
+  background-color: #474747;
 }
 
 
@@ -24,5 +27,8 @@
 }
 
 .domino {
-  background-color: #95BE69;
+  font-weight: bold;
+  color: black;
+  margin: 0 auto;
+  background-color: white;
 }

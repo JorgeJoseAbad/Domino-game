@@ -25,6 +25,7 @@ function GameDomino(options) {
   this.board     =options.board;
   this.dominobox =options.dominobox;
 
+
   this.dominobox.print();
   this.startGame();
   this.dominobox.shuffle();
@@ -67,26 +68,40 @@ if (this.player1.searchNumber(6,6)) {
 
 };
 
-
+/*a partir de ahora seria el desarrollo normal del juego*/
 //segun el turno jugador pone ficha en tabla en posicion central
 GameDomino.prototype.makeTurn=function(){
+
+var col1=25;
+var row1=25;
+var row2=26;
+var col2=25;
+var number=7;
   if (this.player2.turn===true){
-    this.player2.placeDominoInBoard(this.board,50,50,51,50);
+    this.player2.placeDominoInBoard(this.board,row1,col2,row2,col2);
+    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(number);
   }
   else if (this.player1.turn===true){
-    this.player1.placeDominoInBoard(this.board,50,50,51,50);
+    this.player1.placeDominoInBoard(this.board,row1,col1,row2,col2);
+    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
   }
 };
 
 
-/*a partir de ahora seria el desarrollo normal del juego*/
 
 
 
-var gameDomino = new GameDomino({
-  player1:   player1,
-  player2:   player2,
-  board:     dominoBoard,
-  dominobox: dominobox
+$(document).ready(function() {
+
+  var gameDomino = new GameDomino({
+    player1:   player1,
+    player2:   player2,
+    board:     dominoBoard,
+    dominobox: dominobox
+
+  });
 
 });
