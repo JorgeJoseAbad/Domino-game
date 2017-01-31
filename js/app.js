@@ -56,17 +56,21 @@ console.log("hola");
 
 //determina si hay un 6 doble al comienzo OK
 GameDomino.prototype.search66 = function(){
-  var col1=10;
-  var row1=10;
-  var row2=11;
-  var col2=10;
+  var col1=15;
+  var row1=15;
+  var row2=16;
+  var col2=15;
   var dominotaken;
+
 if (this.player1.searchNumber(6,6)) {
   console.log("empieza jugador 1");
   dominoTaken=this.player1.playerTakeDomino(6,6);
   this.player1.placeDominoInBoard(dominoTaken[0],this.board,row1,col1,row2,col2);
   $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+  $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
   $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+  $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
+
   this.player1.turn=false;
   this.player2.turn=true;
 }
@@ -75,9 +79,12 @@ if (this.player1.searchNumber(6,6)) {
     this.player1.turn=false;
     this.player2.turn=true;
     dominotaken=this.player2.playerTakeDomino(6,6);
+
     this.player2.placeDominoInBoard(dominotaken[0],this.board,row1,col1,row2,col2);
     $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
     $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
     this.player1.turn=true;
     this.player2.turn=false;
   }
@@ -85,7 +92,9 @@ if (this.player1.searchNumber(6,6)) {
     console.log("no hay 6 doble, empieza jugador 1 con cualquier ficha");
     this.player1.placeDominoInBoard(undefined,this.board,row1,col1,row2,col2);
     $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
     $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
     this.player1.turn=false;
     this.player2.turn=true;
     }
@@ -114,8 +123,6 @@ var number=7;
 
   }
 };
-
-
 
 
 
