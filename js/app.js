@@ -56,10 +56,10 @@ console.log("hola");
 
 //determina si hay un 6 doble al comienzo OK
 GameDomino.prototype.search66 = function(){
-  var col1=25;
-  var row1=25;
-  var row2=26;
-  var col2=25;
+  var col1=10;
+  var row1=10;
+  var row2=11;
+  var col2=10;
   var dominotaken;
 if (this.player1.searchNumber(6,6)) {
   console.log("empieza jugador 1");

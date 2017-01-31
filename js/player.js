@@ -26,9 +26,23 @@ var player2= new Player({
 //de la caja OK
 Player.prototype.startPlayer=function(dominobox){
 
-  for  (i=0;i<this.MAX_DOMINOES;i++){
+  for  (i=0,col=0;i<this.MAX_DOMINOES;i++){
+
     var shifted =dominobox.body.shift();
     this.body.unshift(shifted);
+    if (this.name==='player2'){
+      $('.cell-player2[data-row="'+'0'+'"][data-col="'+col+'"]').addClass('domino');
+      $('.cell-player2[data-row="'+'0'+'"][data-col="'+col+'"]').html(this.body[0].number1);
+      $('.cell-player2[data-row="'+'1'+'"][data-col="'+col+'"]').addClass('domino');
+      $('.cell-player2[data-row="'+'1'+'"][data-col="'+col+'"]').html(this.body[0].number2);
+      }
+    if (this.name==='player1'){
+      $('.cell-player1[data-row="'+'0'+'"][data-col="'+col+'"]').addClass('domino');
+      $('.cell-player1[data-row="'+'0'+'"][data-col="'+col+'"]').html(this.body[0].number1);
+      $('.cell-player1[data-row="'+'1'+'"][data-col="'+col+'"]').addClass('domino');
+      $('.cell-player1[data-row="'+'1'+'"][data-col="'+col+'"]').html(this.body[0].number2);
+      }
+    col++;
 
   }
   return this.body;
@@ -51,7 +65,6 @@ Player.prototype.searchNumber = function(a,b){
 // busqueda.
 Player.prototype.placeDominoInBoard=function(dominoTaken,board,r1,c1,r2,c2){
   if (typeof dominoTaken !== 'undefined'){
-
     dominoTaken.number1Pos.row=r1;
     dominoTaken.number1Pos.column=c1;
     dominoTaken.number2Pos.row=r2;
@@ -60,7 +73,6 @@ Player.prototype.placeDominoInBoard=function(dominoTaken,board,r1,c1,r2,c2){
     return board.domino;
   }
   else {
-
     var shifted = this.body.shift();
     shifted.number1Pos.row=r1;
     shifted.number1Pos.column=c1;

@@ -1,23 +1,26 @@
 .boardTable {
-  height: 800px;
-  margin: 30px auto;
-  width: 800px;
+  height: 600px;
+  margin: 20px auto;
+  width: 600px;
   background-color: red;
 
 }
 
-.player{
+.player1,.player2{
   height: 100px;
-  margin: 30px auto;
-  width: 800px;
+  margin: 20px auto;
+  padding-top: 20px;
+  height: auto;
+  width: 240px;
+  background-color: blue;
 }
 
 .cell-board {
   background-size: contain;
   box-sizing: border-box;
   float: left;
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   background-color: #474747;
 }
 
@@ -31,4 +34,21 @@
   color: black;
   margin: 0 auto;
   background-color: white;
+  border: 1px;
+  border-color: black;
+  text-align: center;
+}
+
+#dominoesPlayer1, #dominoesPlayer2{
+  height: 60px;
+  background-color: magenta;
+}
+
+.cell-player1,.cell-player2{
+  float: left;
+  height: 30px;
+  width: 30px;
+  border: 1px;
+  border-color: black;
+
 }
