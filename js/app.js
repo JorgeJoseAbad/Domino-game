@@ -57,14 +57,41 @@ console.log("hola");
 
 //determina si hay un 6 doble al comienzo OK
 GameDomino.prototype.search66 = function(){
-if (this.player1.searchNumber(6,6)) {
-  console.log("empieza 1");
+  var col1=25;
+  var row1=25;
+  var row2=26;
+  var col2=25;
+  var dominotaken;
+if (this.player1.searchNumber(6,6)) { //estoy buscando elnumero bien
+  console.log("empieza 1");  //pero luego no pongo el 6 doble, ver funcion placeDominoInBoard
+  dominotaken=this.player1.playerTakeDomino(6,6);//////--------
+  console.log(dominotaken);
+  this.player1.placeDominoInBoard(dominotaken,this.board,row1,col1,row2,col2);
+  $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+  $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+  this.player1.turn=false;
+  this.player2.turn=true;
 }
   else if (this.player2.searchNumber(6,6)) {
     console.log("empieza2");
     this.player1.turn=false;
     this.player2.turn=true;
-  } else console.log("no hay 6 doble, empieza 1");
+    dominotaken=this.player2.playerTakeDomino(6,6);
+    console.log(dominotaken);
+    this.player2.placeDominoInBoard(dominotaken,this.board,row1,col1,row2,col2);
+    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+    this.player1.turn=true;
+    this.player2.turn=false;
+  }
+   else {
+    console.log("no hay 6 doble, empieza 1");
+    this.player1.placeDominoInBoard(dominotaken,this.board,row1,col1,row2,col2);
+    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+    this.player1.turn=false;
+    this.player2.turn=true;
+    }
 
 };
 
@@ -72,10 +99,10 @@ if (this.player1.searchNumber(6,6)) {
 //segun el turno jugador pone ficha en tabla en posicion central
 GameDomino.prototype.makeTurn=function(){
 
-var col1=25;
-var row1=25;
-var row2=26;
-var col2=25;
+var col1=30;
+var row1=30;
+var row2=31;
+var col2=30;
 var number=7;
   if (this.player2.turn===true){
     this.player2.placeDominoInBoard(this.board,row1,col2,row2,col2);
@@ -87,6 +114,7 @@ var number=7;
     this.player1.placeDominoInBoard(this.board,row1,col1,row2,col2);
     $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
     $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+
   }
 };
 

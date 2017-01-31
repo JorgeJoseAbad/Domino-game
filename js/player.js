@@ -38,7 +38,8 @@ Player.prototype.startPlayer=function(dominobox){
 
 Player.prototype.searchNumber = function(a,b){
   for (i=0;i<this.body.length;i++){
-  if (this.body[i].number1===a && this.body[i].number2===b){
+  if ((this.body[i].number1===a && this.body[i].number2===b)||
+   (this.body[i].number1===b && this.body[i].number2===a)){
     return true;
   }
 }
@@ -46,8 +47,9 @@ Player.prototype.searchNumber = function(a,b){
 };
 
 
-//jugador pone domino en la mesa
-Player.prototype.placeDominoInBoard=function(board,r1,c1,r2,c2){
+//jugador pone domino en la mesa pero lo hace por orden en el array (Shift) no por
+// busqueda.
+Player.prototype.placeDominoInBoard=function(dominoPiece,board,r1,c1,r2,c2){
   var shifted = this.body.shift();
   shifted.number1Pos.row=r1;
   shifted.number1Pos.column=c1;
@@ -56,6 +58,40 @@ Player.prototype.placeDominoInBoard=function(board,r1,c1,r2,c2){
   board.domino.unshift(shifted);
   return board.domino;
 };
+
+
+Player.prototype.playerTakeDomino=function(num1,num2){
+    console.log("this.body    es:");
+    console.log(this.body);
+    console.log("numero1 es: "+num1);
+    console.log("el primero es: "+this.body[0].number1);
+    console.log("numero2 es: "+num1);
+    console.log("el primero es: "+this.body[0].number2);
+    console.log("............");
+    var indexbody=0;
+    this.body.forEach(function(item, index){
+    //var i=index;
+      console.log(item.number1+" "+num1);
+      console.log(item.number2+" "+num2);
+      console.log(index);
+
+      if (((item.number1===num1) && (item.number2===num2)) ||
+            ((item.number1===num2) && (item.number2===num1))){
+        console.log("bingooooo");
+        console.log("index: "+index);
+        indexbody=index;
+        return index;
+      }
+      return -1;
+    },0);
+    //console.log(indexDomino);
+    console.log("indexDomino es: "+indexbody);
+    console.log("ahora deberia toma el index of elemento");
+    if (indexbody>-1) {
+      return this.body.splice(indexbody,1);
+      }
+};
+
 
 
 /*Player.prototipe.checkDomino=function (domino){
