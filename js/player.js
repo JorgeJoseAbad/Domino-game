@@ -31,17 +31,16 @@ Player.prototype.startPlayer=function(dominobox){
     var shifted =dominobox.body.shift();
     this.body.unshift(shifted);
     if (this.name==='player2'){
-      $('.cell-player2[data-row="'+'0'+'"][data-col="'+col+'"]').addClass('domino');
-      $('.cell-player2[data-row="'+'0'+'"][data-col="'+col+'"]').html(this.body[0].number1);
-      $('.cell-player2[data-row="'+'1'+'"][data-col="'+col+'"]').addClass('domino');
-      $('.cell-player2[data-row="'+'1'+'"][data-col="'+col+'"]').html(this.body[0].number2);
+
+      $('.dominoTokenP2[tokenNumber='+i+']').addClass('domino');
+      $('.dominoTokenP2[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML = this.body[0].number1;
+      $('.dominoTokenP2[tokenNumber="'+i+'"]')[0].childNodes[1].innerHTML = this.body[0].number2;
       }
     if (this.name==='player1'){
-      $('.cell-player1[data-row="'+'0'+'"][data-col="'+col+'"]').addClass('domino');
-      $('.cell-player1[data-row="'+'0'+'"][data-col="'+col+'"]').html(this.body[0].number1);
-      $('.cell-player1[data-row="'+'1'+'"][data-col="'+col+'"]').addClass('domino');
-      $('.cell-player1[data-row="'+'1'+'"][data-col="'+col+'"]').html(this.body[0].number2);
-      }
+      $('.dominoTokenP1[tokenNumber='+i+']').addClass('domino');
+      $('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML = this.body[0].number1;
+      $('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[1].innerHTML = this.body[0].number2;
+        }
     col++;
 
   }
@@ -101,37 +100,49 @@ Player.prototype.playerTakeDomino=function(num1,num2){
       }
 };
 
+
+//$('.dominoTokenP1[tokenNumber='+i+']').addClass('domino');
+//$('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML = this.body[0].number1;
+//$('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[1].innerHTML = this.body[0].number2;
+
 //function that udate players dominoes visual
 Player.prototype.updatePlayerDominoes=function(){
  if (this.name=="player1") {
     for (i=0; i<this.body.length; i++){
-      $('.cell-player1[data-row="'+'0'+'"][data-col="'+i+'"]').html(this.body[i].number1);
-      $('.cell-player1[data-row="'+'1'+'"][data-col="'+i+'"]').html(this.body[i].number2);
+      $('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML = this.body[i].number1;
+      $('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[1].innerHTML = this.body[i].number2;
+
+
+      //$('.cell-player1[data-row="'+'0'+'"][data-col="'+i+'"]').html(this.body[i].number1);
+      //$('.cell-player1[data-row="'+'1'+'"][data-col="'+i+'"]').html(this.body[i].number2);
     }
     for (i=this.body.length; i<this.MAX_DOMINOES; i++){
-      $('.cell-player1[data-row="'+'0'+'"][data-col="'+i+'"]').html(' ');
-      $('.cell-player1[data-row="'+'1'+'"][data-col="'+i+'"]').html(' ');
+      $('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML = ' ';
+      $('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[1].innerHTML = ' ';
+
+
+      //$('.cell-player1[data-row="'+'0'+'"][data-col="'+i+'"]').html(' ');
+      //$('.cell-player1[data-row="'+'1'+'"][data-col="'+i+'"]').html(' ');
     }
   }
   else if (this.name=='player2'){
     for (i=0; i<this.body.length; i++){
-      $('.cell-player2[data-row="'+'0'+'"][data-col="'+i+'"]').html(this.body[i].number1);
-      $('.cell-player2[data-row="'+'1'+'"][data-col="'+i+'"]').html(this.body[i].number2);
+      $('.dominoTokenP2[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML = this.body[i].number1;
+      $('.dominoTokenP2[tokenNumber="'+i+'"]')[0].childNodes[1].innerHTML = this.body[i].number2;
+
+
+      //$('.cell-player2[data-row="'+'0'+'"][data-col="'+i+'"]').html(this.body[i].number1);
+      //$('.cell-player2[data-row="'+'1'+'"][data-col="'+i+'"]').html(this.body[i].number2);
     }
     for (i=this.body.length; i<this.MAX_DOMINOES; i++){
-      $('.cell-player2[data-row="'+'0'+'"][data-col="'+i+'"]').html(' ');
-      $('.cell-player2[data-row="'+'1'+'"][data-col="'+i+'"]').html(' ');
+      $('.dominoTokenP2[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML = ' ';
+      $('.dominoTokenP2[tokenNumber="'+i+'"]')[0].childNodes[1].innerHTML = ' ';
+
+
+      //$('.cell-player2[data-row="'+'0'+'"][data-col="'+i+'"]').html(' ');
+      //$('.cell-player2[data-row="'+'1'+'"][data-col="'+i+'"]').html(' ');
     }
 
   }
 
 };
-
-/*Player.prototipe.checkDomino=function (domino){
-for (i=0;i<MAX_DOMINOES;i++){
-  if (domino.number1 === this.body[i].number1 || domino.number1===this.body[i].number2 ||
-    domino.number2===this.body[i].number1 || domino.number2===this.body[i].number2)
-    return i;
-    }
-};
-*/

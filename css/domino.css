@@ -48,6 +48,21 @@
   background-color: magenta;
 }
 
+.dominoTokenP1, .dominoTokenP2{
+  float: left;
+  height: 60px;
+  width: 30px;
+  border: 1px;
+  border-color: black;
+}
+
+.partNumberP1, .partNumberP2{
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+
+
 .cell-player1,.cell-player2{
   float: left;
   height: 30px;

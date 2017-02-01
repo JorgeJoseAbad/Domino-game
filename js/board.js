@@ -23,21 +23,30 @@ function Board(options) {
     }
   }
 
-
-for (var rowPlayer=0; rowPlayer < options.rowsPlayer; rowPlayer++){
-  for (var columnPlayer=0; columnPlayer<options.columnsPlayer; columnPlayer++){
+  for (var columnsPlayerindex=0; columnsPlayerindex<options.columnsPlayer;
+                                      columnsPlayerindex++){
     $('#dominoesPlayer1').append($('<div>')
-      .addClass('cell-player1')
-      .attr('data-row',rowPlayer)
-      .attr('data-col',columnPlayer)
-    );
+      .addClass('dominoTokenP1')
+      .attr('tokenNumber',columnsPlayerindex)
+      );
     $('#dominoesPlayer2').append($('<div>')
-      .addClass('cell-player2')
-      .attr('data-row',rowPlayer)
-      .attr('data-col',columnPlayer)
+      .addClass('dominoTokenP2')
+      .attr('tokenNumber',columnsPlayerindex)
       );
     }
-  }
+    for (var rowsPlayerindex=0; rowsPlayerindex<options.rowsPlayer;
+                                        rowsPlayerindex++){
+      $('.dominoTokenP1').append($('<div>')
+        .addClass('parNumberP1')
+        .attr('numberInToken',rowsPlayerindex)
+      );
+      $('.dominoTokenP2').append($('<div>')
+        .addClass('parNumberP2')
+        .attr('numberInToken',rowsPlayerindex)
+      );
+
+    }
+
 }
 
 var dominoBoard= new Board({
