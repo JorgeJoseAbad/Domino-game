@@ -45,7 +45,7 @@
 
 #dominoesPlayer1, #dominoesPlayer2{
   height: 60px;
-  background-color: magenta;
+  background-color: grey;
 }
 
 .dominoTokenP1, .dominoTokenP2{

@@ -30,11 +30,9 @@ function GameDomino(options) {
   this.startGame();
   this.dominobox.shuffle();
   this.dominobox.print();
-  //this.player1.startPlayer();
-  //this.player2.startPlayer();
   this.giveDominoes();
   this.search66();
-  //this.makeTurn();
+  this.makeTurn();
 
 
 }
@@ -119,26 +117,30 @@ if (this.player1.searchNumber(6,6)) {
 //segun el turno jugador pone ficha en tabla en posicion central
 GameDomino.prototype.makeTurn=function(){
 
-var col1=30;
-var row1=30;
-var row2=31;
-var col2=30;
-var number=7;
+console.log("empezamos con las jugadas normales");
+
   if (this.player2.turn===true){
-    this.player2.placeDominoInBoard(this.board,row1,col2,row2,col2);
-    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
-    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
-    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(number);
+    console.log("player 2 tiene turno");
+    $('.dominoTokenP2').click(function(){
+      var num0=$(this).attr("tokenNumber");
+      console.log("he pasao por aqui en player 2");
+      console.log(num0);
+      //var num1=$('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML;
+      //  console.log(num1);
+      //this.player1.playerTakeDomino(num1,num2);
+    });
   }
+
   else if (this.player1.turn===true){
-    this.player1.placeDominoInBoard(this.board,row1,col1,row2,col2);
-    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
-    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
-
+    console.log("player 1 tiene turno");
+    $('.dominoTokenP1').click(function(){
+      var num0=$(this).attr("tokenNumber");
+      console.log("he pasao por aqui en player 1");
+      console.log(num0);
+    });
   }
+
 };
-
-
 
 $(document).ready(function() {
 
