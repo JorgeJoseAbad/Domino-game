@@ -101,7 +101,43 @@ Player.prototype.playerTakeDomino=function(num1,num2){
       }
 };
 
+//function that udate players dominoes visual
+Player.prototype.updatePlayerDominoes=function(){
+ if (this.name=="player1") {
+    for (i=0; i<this.body.length; i++){
+      console.log(this.name);
+      console.log(this.body.length);
+      console.log("paso por actualizado");
+      $('.cell-player1[data-row="'+'0'+'"][data-col="'+i+'"]').html(this.body[i].number1);
+      $('.cell-player1[data-row="'+'1'+'"][data-col="'+i+'"]').html(this.body[i].number2);
+    }
+    for (i=this.body.length; i<this.MAX_DOMINOES; i++){
+      console.log(this.name);
+      console.log(this.body.length);
+      console.log("paso por borrado");
+      $('.cell-player1[data-row="'+'0'+'"][data-col="'+i+'"]').html(' ');
+      $('.cell-player1[data-row="'+'1'+'"][data-col="'+i+'"]').html(' ');
+    }
+  }
+  else if (this.name=='player2'){
+    for (i=0; i<this.body.length; i++){
+      console.log(this.name);
+      console.log(this.body.length);
+      console.log("paso por actualizado");
+      $('.cell-player2[data-row="'+'0'+'"][data-col="'+i+'"]').html(this.body[i].number1);
+      $('.cell-player2[data-row="'+'1'+'"][data-col="'+i+'"]').html(this.body[i].number2);
+    }
+    for (i=this.body.length; i<this.MAX_DOMINOES; i++){
+      console.log(this.name);
+      console.log(this.body.length);
+      console.log("paso por borrado");
+      $('.cell-player2[data-row="'+'0'+'"][data-col="'+i+'"]').html(' ');
+      $('.cell-player2[data-row="'+'1'+'"][data-col="'+i+'"]').html(' ');
+    }
 
+  }
+
+};
 
 /*Player.prototipe.checkDomino=function (domino){
 for (i=0;i<MAX_DOMINOES;i++){

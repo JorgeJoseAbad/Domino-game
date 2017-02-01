@@ -7,7 +7,7 @@ function Board(options) {
 
   this.rows           = options.rows;
   this.columns        = options.columns;
-  this.rowwPlayer     = options.rowsPlayer;
+  this.rowPlayer      = options.rowsPlayer;
   this.columnsPlayer  = options.columnsPlayer;
   this.domino         = options.domino;
 

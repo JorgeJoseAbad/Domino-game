@@ -70,6 +70,7 @@ if (this.player1.searchNumber(6,6)) {
   $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
   $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
   $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
+  this.player1.updatePlayerDominoes();
 
   this.player1.turn=false;
   this.player2.turn=true;
@@ -79,12 +80,12 @@ if (this.player1.searchNumber(6,6)) {
     this.player1.turn=false;
     this.player2.turn=true;
     dominotaken=this.player2.playerTakeDomino(6,6);
-
     this.player2.placeDominoInBoard(dominotaken[0],this.board,row1,col1,row2,col2);
     $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
     $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
     $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
     $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
+    this.player2.updatePlayerDominoes();
     this.player1.turn=true;
     this.player2.turn=false;
   }
@@ -95,6 +96,7 @@ if (this.player1.searchNumber(6,6)) {
     $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
     $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
     $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
+    this.player1.updatePlayerDominoes();
     this.player1.turn=false;
     this.player2.turn=true;
     }
