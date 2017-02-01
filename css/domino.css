@@ -39,6 +39,10 @@
   text-align: center;
 }
 
+.namePlayer1, .namePlayer2{
+  text-align: center;
+}
+
 #dominoesPlayer1, #dominoesPlayer2{
   height: 60px;
   background-color: magenta;
@@ -51,4 +55,8 @@
   border: 1px;
   border-color: black;
 
+}
+
+.turn {
+  background-color: red;
 }
