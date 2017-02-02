@@ -1,23 +1,5 @@
-//se compone de dos jugadores y una tabla donde se ponen las fichas
-//el juego crea la tabla.
-//el juego crea las fichas, el cajon de fichas
-//el juego crea dos jugadores
-//el juego da el turno inicialmente al jugador 1.
-//para iniciar el juego baraja las fichas.
-//hace que cada jugador tome 8 fichas de la caja
-//Determina si un jugador tiene seis doble si alguno lo tiene lo pone en la mesa
-// si ninguno tiene el jugador 1 pone una ficha en la mesa y se le da visibilidad
-// Pasa el juego al jugador 2 y comprueba si tiene una ficha que tenga un numero coincidente con uno de
-// la ficha anterior:
-//  si es asi la pone en la mesa adyaccente al numero buscado dando visibilidad al numero opuesto de la ficha,
-//  y pasa turno al siguiente jugador.
-//  si no, el jugador 2 toma una ficha de la caja y vuelve a comprobar.
-//     si coincide la pone como especificado, si no coincide pasa turno al siguiente jugador
-//
-//El juego pasa al otro jugador actuando de la misma manera.
-// el juego acaba cuando uno de los jugadores queda sin fichas (gana).
-//      o cuando no coincide ninguna ficha del jugador 1 ni del jugador 2 con una de las visibles en tabla.
-//
+
+
 function GameDomino(options) {
 
   this.player1   =options.player1;
@@ -33,26 +15,25 @@ function GameDomino(options) {
   this.giveDominoes();
   this.search66();
   this.makeTurn();
-  //this.changeTurn();
+
 
 }
 
-//funcion que da el turno al jugador1 de entrada OK
+
 GameDomino.prototype.startGame = function(){
   this.player1.turn=true;
   console.log("empezamos");
 };
 
-//funcion que envia la caja de fichas a los jugadores
-//para que estos tomen sus 8 fichas
+
 GameDomino.prototype.giveDominoes = function(){
-console.log("hola");
+console.log("Damos fichas");
   this.player1.startPlayer(this.dominobox);
   this.player2.startPlayer(this.dominobox);
 
 };
 
-//determina si hay un 6 doble al comienzo OK
+
 GameDomino.prototype.search66 = function(){
   var col1=15;
   var row1=15;
@@ -108,33 +89,11 @@ GameDomino.prototype.search66 = function(){
       this.player2.turn=true;
       $('.namePlayer1').removeClass('turn');
       $('.namePlayer2').addClass('turn');
-
       }
 
 };
 
 
-GameDomino.prototype.changeTurn=function(){
-
-  if (this.player2.turn===true){
-    this.player2.turn=false;
-    this.player1.turn=true;
-    $('.namePlayer2').removeClass('turn');
-    $('.namePlayer1').addClass('turn');
-  }
-
-  else if (this.player1.turn===true){
-    this.player1.turn=false;
-    this.player2.turn=true;
-    $('.namePlayer1').removeClass('turn');
-    $('.namePlayer2').addClass('turn');
-  }
-
-};
-
-
-/*a partir de ahora seria el desarrollo normal del juego*/
-//segun el turno jugador pone ficha en tabla en posicion central
 GameDomino.prototype.makeTurn=function(){
 
   console.log("empezamos con las jugadas normales");
@@ -143,11 +102,11 @@ GameDomino.prototype.makeTurn=function(){
   var that = this;
 
     if (this.player2.turn===true){
-      console.log(this.player2.name); //ok
-      console.log("player 2 tiene turno"); //ok
+      console.log(this.player2.name);
+      console.log("player 2 tiene turno");
       $('.dominoTokenP2').click(function(){
         var num0=$(this).attr("tokenNumber");
-        console.log("he pasao por aqui en player 2");
+        console.log("he pasao por turno manual en player 2");
         console.log("num0: "+num0);
         num1=parseInt($(this)[0].childNodes[0].innerHTML);
         num2=parseInt($(this)[0].childNodes[1].innerHTML);
@@ -155,7 +114,8 @@ GameDomino.prototype.makeTurn=function(){
         var dominoTakenP2;
         if (that.player2.searchNumber(num1,num2)){
             dominoTakenP2=that.player2.playerTakeDomino(num1,num2);
-            console.log("dominopillado: "+dominoTakenP2[0].number1+"|"+dominoTakenP2[0].number2);
+            console.log("dominopillado: "+dominoTakenP2[0].number1+
+            "|"+dominoTakenP2[0].number2);
 
         }
         that.board.placeNewDominoInBoard(dominoTakenP2);
@@ -164,16 +124,16 @@ GameDomino.prototype.makeTurn=function(){
         that.player1.turn=true;
         $('.namePlayer2').removeClass('turn');
         $('.namePlayer1').addClass('turn');
-        //that.changeTurn(); //esta manera no vale
+        that.makeTurn();
       });
     }
 
     else if (this.player1.turn===true){
-      console.log(this.player1.name);  //ok
-      console.log("player 1 tiene turno"); //ok
+      console.log(this.player1.name);
+      console.log("player 1 tiene turno");
       $('.dominoTokenP1').click(function(){
         var num0=$(this).attr("tokenNumber");
-        console.log("he pasao por aqui en player 1");
+        console.log("he pasado por turno manual en player 1");
         console.log("num0: "+num0);
         num1=parseInt($(this)[0].childNodes[0].innerHTML);
         num2=parseInt($(this)[0].childNodes[1].innerHTML);
@@ -181,7 +141,8 @@ GameDomino.prototype.makeTurn=function(){
         var dominoTakenP1;
         if (that.player1.searchNumber(num1,num2)){
           dominoTakenP1=that.player1.playerTakeDomino(num1,num2);
-          console.log("dominopillado: "+dominoTakenP1[0].number1+"|"+dominoTakenP1[0].number2);
+          console.log("dominopillado: "+dominoTakenP1[0].number1+
+          "|"+dominoTakenP1[0].number2);
 
         }
         that.board.placeNewDominoInBoard(dominoTakenP1);
@@ -190,7 +151,7 @@ GameDomino.prototype.makeTurn=function(){
         that.player2.turn=true;
         $('.namePlayer1').removeClass('turn');
         $('.namePlayer2').addClass('turn');
-        //that.changeTurn(); //esta nanera no vale.
+        that.makeTurn();
       });
     }
 };

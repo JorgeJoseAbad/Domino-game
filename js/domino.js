@@ -1,15 +1,18 @@
-// hay 28 fichas en una caja o conjuto arrqy de fichas:
-//cada ficha tiene dos numeros, indicaca si cada numero esta open (no esta cerrado, inicialmente todos open)
-//cada dicha tiene row & column para cada numero.
-//permite barajar las fichas en la caja
-//permite tomar una ficha del comienzo
-//permite poner una ficha al final
 
 function Dominobox(options) {
-  //posicion inicial ordenada de las fichas de domino en la caja
+  
   this.body = [
-      {number1:0,number2:0,number1Open:true,number2Open:true,
-      number1Pos:{row:100,column:100,},number2Pos:{row:100,column:100,}},
+      { number1:0,
+        number2:0,
+        number1Open:true,
+        number2Open:true,
+        number1Pos:{
+          row:100,
+          column:100,},
+        number2Pos:{
+          row:100,
+          column:100,}
+      },
       {number1:0,number2:1,number1Open:true,number2Open:true,
       number1Pos:{row:100,column:100,},number2Pos:{row:100,column:100,}},
       {number1:0,number2:2,number1Open:true,number2Open:true,
@@ -66,10 +69,10 @@ function Dominobox(options) {
       number1Pos:{row:100,column:100,},number2Pos:{row:100,column:100,}},
       ];
 
-      // this.shuffle();
+
 }
 
-//funcion para imprimir las fichas OK
+
 Dominobox.prototype.print = function() {
   var pieces = [];
   for (var i = 0; i < this.body.length; i++) {
@@ -82,7 +85,7 @@ Dominobox.prototype.print = function() {
 };
 
 
-// barajar las fichas OK
+
 Dominobox.prototype.shuffle = function () {
   this.body.sort(function(a, b){
     return 0.5 - Math.random();
@@ -97,12 +100,12 @@ var dominobox = new Dominobox({
 
 
 
-//coger una ficha del principio, para comprobr por ejemplo
+
 Dominobox.prototype.getDomino= function(){
   this.body.shift();
 };
 
-//dejar una ficha al final
+
 Dominobox.prototype.letDomino = function () {
   this.body.push(item);
 };

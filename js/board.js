@@ -1,8 +1,4 @@
 
-//Board  contiene array de dominoes, inicialmente vacio
-//Board  tiene unas dimensiones en rows and columns
-//Board  muestra fichas fichas expuestas
-//Board  muestra estado jugador activo (fichas y sus numeros )
 function Board(options) {
 
   this.rows           = options.rows;
@@ -12,7 +8,7 @@ function Board(options) {
   this.domino         = options.domino;
 
 
-//para dar formato a la tabla
+
   for (var rowIndex = 0; rowIndex < options.rows; rowIndex++){
     for (var columnIndex = 0; columnIndex < options.columns; columnIndex++){
       $('.boardTable').append($('<div>')
@@ -49,7 +45,7 @@ function Board(options) {
 }
 
 
-//FUNCTION NOT FULLY IMPLEMENTED!!!!!!!
+
 Board.prototype.placeNewDominoInBoard=function(dominoTaken){
   console.log("funcion place new domino in board");
   console.log(dominoTaken);
@@ -66,6 +62,7 @@ Board.prototype.placeNewDominoInBoard=function(dominoTaken){
     posr2=posr1+1;
     posc2=posc1;
     console.log(posr1+" "+posc1+" "+posr2+" "+posc2);
+
     dominoTaken[0].number1Pos.row=posr1;
     dominoTaken[0].number1Pos.column=posc1;
     dominoTaken[0].number2Pos.row=posr2;
@@ -75,11 +72,8 @@ Board.prototype.placeNewDominoInBoard=function(dominoTaken){
     $('div[data-row="'+posr1+'"][data-col="'+posc1+'"]').html(that.domino[0].number1);
     $('div[data-row="'+posr2+'"][data-col="'+posc2+'"]').addClass('domino');
     $('div[data-row="'+posr2+'"][data-col="'+posc2+'"]').html(that.domino[0].number2);
-
-
+    return;
   });
-
-
 
 };
 
@@ -87,12 +81,10 @@ Board.prototype.placeNewDominoInBoard=function(dominoTaken){
 
 
 
-
-
 var dominoBoard= new Board({
-  rows: 30,
-  columns: 30,
-  rowsPlayer: 2,
+  rows:         30,
+  columns:      30,
+  rowsPlayer:    2,
   columnsPlayer: 8,
-  domino: []
+  domino:       []
 });

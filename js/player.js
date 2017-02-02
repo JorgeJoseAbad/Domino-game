@@ -1,14 +1,8 @@
-// player have dominoes 8 maximum at a time he begin with 0 dominoes
-// player knows how many dominoes have.
-//player comprueba si una de sus fichas tiene un numero que coincide con el de una ficha
-// puesta en la tabla
-//player put dominoes in desk
-//player get dominoes from Dominobox
-//player can put dominoes in Dominobox
+
 function Player(options) {
   this.MAX_DOMINOES=8;
-  this.body =  []; //dominoes of player
-  this.turn= false; //jugador no tiene turno por defecto
+  this.body =  [];
+  this.turn= false;
   this.name=options.name;
 
 }
@@ -22,8 +16,7 @@ var player2= new Player({
   name: "player2",
 });
 
-//funcion que carga al jugador con 8 fichas que extrae
-//de la caja OK
+
 Player.prototype.startPlayer=function(dominobox){
 
   for  (i=0 ;i<this.MAX_DOMINOES; i++){
@@ -54,18 +47,17 @@ Player.prototype.searchNumber = function(a,b){
   console.log("numero a en searchnumber: "+a);
   console.log("numero b en searchnumber: "+b);
   for (i=0;i<this.body.length;i++){
-  if ((this.body[i].number1===a && this.body[i].number2===b)||
-   (this.body[i].number1===b && this.body[i].number2===a)){
-     console.log("numero "+a+"|"+b+" encontrado");
-    return true;
+    if ((this.body[i].number1===a && this.body[i].number2===b)||
+     (this.body[i].number1===b && this.body[i].number2===a)){
+       console.log("numero "+a+"|"+b+" encontrado");
+      return true;
+    }
   }
-}
   return false;
 };
 
 
-//jugador pone domino en la mesa pero lo hace por orden en el array (Shift) no por
-// busqueda.
+
 Player.prototype.placeDominoInBoard=function(dominoTaken,board,r1,c1,r2,c2){
   if (typeof dominoTaken !== 'undefined'){
     dominoTaken.number1Pos.row=r1;
@@ -106,7 +98,7 @@ Player.prototype.playerTakeDomino=function(num1,num2){
 
 
 
-//function that udate players dominoes visual
+
 Player.prototype.updatePlayerDominoes=function(){
  if (this.name=="player1") {
     for (i=0; i<this.body.length; i++){
@@ -129,7 +121,5 @@ Player.prototype.updatePlayerDominoes=function(){
       $('.dominoTokenP2[tokenNumber="'+i+'"]')[0].childNodes[1].innerHTML = ' ';
       $('.dominoTokenP2[tokenNumber='+i+']').removeClass('domino');
     }
-
   }
-
 };
