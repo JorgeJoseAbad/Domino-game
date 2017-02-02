@@ -117,30 +117,47 @@ if (this.player1.searchNumber(6,6)) {
 //segun el turno jugador pone ficha en tabla en posicion central
 GameDomino.prototype.makeTurn=function(){
 
-console.log("empezamos con las jugadas normales");
+  console.log("empezamos con las jugadas normales");
+  var num1=0;
+  var num2=0;
+  var that = this;
 
-  if (this.player2.turn===true){
-    console.log("player 2 tiene turno");
-    $('.dominoTokenP2').click(function(){
-      var num0=$(this).attr("tokenNumber");
-      console.log("he pasao por aqui en player 2");
-      console.log(num0);
-      //var num1=$('.dominoTokenP1[tokenNumber="'+i+'"]')[0].childNodes[0].innerHTML;
-      //  console.log(num1);
-      //this.player1.playerTakeDomino(num1,num2);
-    });
-  }
+    if (this.player2.turn===true){
+      console.log(this.player2.name); //ok
+      console.log("player 2 tiene turno"); //ok
+      $('.dominoTokenP2').click(function(){
+        var num0=$(this).attr("tokenNumber");
+        console.log("he pasao por aqui en player 2");
+        console.log("num0: "+num0);
+        num1=parseInt($(this)[0].childNodes[0].innerHTML);
+        num2=parseInt($(this)[0].childNodes[1].innerHTML);
+        console.log("Domino selected by player2: "+num1+" | "+num2);
+        if (that.player2.searchNumber(num1,num2)){
+            var dominoTakenP2=that.player2.playerTakeDomino(num1,num2);
+            console.log("dominopillado: "+dominoTakenP2[0].number1+"|"+dominoTakenP2[0].number2);
+        }
+      });
+    }
 
-  else if (this.player1.turn===true){
-    console.log("player 1 tiene turno");
-    $('.dominoTokenP1').click(function(){
-      var num0=$(this).attr("tokenNumber");
-      console.log("he pasao por aqui en player 1");
-      console.log(num0);
-    });
-  }
-
+    else if (this.player1.turn===true){
+      console.log(this.player1.name);  //ok
+      console.log("player 1 tiene turno"); //ok
+      $('.dominoTokenP1').click(function(){
+        var num0=$(this).attr("tokenNumber");
+        console.log("he pasao por aqui en player 1");
+        console.log("num0: "+num0);
+        num1=parseInt($(this)[0].childNodes[0].innerHTML);
+        num2=parseInt($(this)[0].childNodes[1].innerHTML);
+        console.log("Domino selected: by player1 "+num1+" | "+num2);
+        if (that.player1.searchNumber(num1,num2)){
+          var dominoTakenP1=that.player1.playerTakeDomino(num1,num2);
+          console.log("dominopillado: "+dominoTakenP1[0].number1+"|"+dominoTakenP1[0].number2);
+        }
+      });
+    }
 };
+
+
 
 $(document).ready(function() {
 

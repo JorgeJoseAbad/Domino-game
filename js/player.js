@@ -49,10 +49,14 @@ Player.prototype.startPlayer=function(dominobox){
 
 
 Player.prototype.searchNumber = function(a,b){
+  console.log("Buscamos para...: ");
+  console.log(this.name);
+  console.log("numero a en searchnumber: "+a);
+  console.log("numero b en searchnumber: "+b);
   for (i=0;i<this.body.length;i++){
   if ((this.body[i].number1===a && this.body[i].number2===b)||
    (this.body[i].number1===b && this.body[i].number2===a)){
-     console.log("numero "+a+b+"encontrado");
+     console.log("numero "+a+"|"+b+" encontrado");
     return true;
   }
 }
