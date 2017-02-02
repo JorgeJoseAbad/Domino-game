@@ -46,8 +46,37 @@ function Board(options) {
       );
 
     }
-
 }
+
+
+//FUNCTION NOT FULLY IMPLEMENTED!!!!!!!
+Board.prototype.placeNewDominoInBoard=function(dominoTaken){
+
+  $('.dominoTokenP2').click(function(){
+    var posr1=$(this).attr("data-row");
+    var posc1=$(this).attr("data-col");
+    var posr2=posr1+1;
+    var posc2=posc1;
+
+  });
+
+  dominoTaken.number1Pos.row=posr1;
+  dominoTaken.number1Pos.column=posc1;
+  dominoTaken.number2Pos.row=posr2;
+  dominoTaken.number2Pos.column=posc2;
+  this.domino.unshift(dominoTaken);
+  $('div[data-row="'+posr1+'"][data-col="'+posc1+'"]').addClass('domino');
+  $('div[data-row="'+posr1+'"][data-col="'+posc1+'"]').html(this.domino[0].number1);
+  $('div[data-row="'+posr2+'"][data-col="'+posc2+'"]').addClass('domino');
+  $('div[data-row="'+posr2+'"][data-col="'+posc2+'"]').html(this.domino[0].number1);
+
+};
+
+
+
+
+
+
 
 var dominoBoard= new Board({
   rows: 30,

@@ -106,11 +106,3 @@ Dominobox.prototype.getDomino= function(){
 Dominobox.prototype.letDomino = function () {
   this.body.push(item);
 };
-
-//Comprobar numero de una ficha retorna true si el numero buscado esta
-//no esto lo hara el juego
-/*Domino.prototype.checkNumber=function(number){
-  this.body.(function(number)){
-    return (item.number1===number || item.number2===number);
-  };
-};*/

@@ -33,7 +33,7 @@ function GameDomino(options) {
   this.giveDominoes();
   this.search66();
   this.makeTurn();
-
+  //this.changeTurn();
 
 }
 
@@ -60,44 +60,10 @@ GameDomino.prototype.search66 = function(){
   var col2=15;
   var dominotaken;
 
-if (this.player1.searchNumber(6,6)) {
-  console.log("empieza jugador 1");
-  dominoTaken=this.player1.playerTakeDomino(6,6);
-  this.player1.placeDominoInBoard(dominoTaken[0],this.board,row1,col1,row2,col2);
-  $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
-  $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
-  $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
-  $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
-  this.player1.updatePlayerDominoes();
-
-  this.player1.turn=false;
-  this.player2.turn=true;
-  $('.namePlayer2').addClass('turn');
-
-}
-  else if (this.player2.searchNumber(6,6)) {
-    console.log("empieza jugador 2");
-    this.player1.turn=false;
-    this.player2.turn=true;
-    $('.namePlayer2').addClass('turn');
-
-    dominotaken=this.player2.playerTakeDomino(6,6);
-    this.player2.placeDominoInBoard(dominotaken[0],this.board,row1,col1,row2,col2);
-    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
-    $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
-    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
-    $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
-    this.player2.updatePlayerDominoes();
-
-    this.player1.turn=true;
-    this.player2.turn=false;
-    $('.namePlayer2').removeClass('turn');
-    $('.namePlayer1').addClass('turn');
-
-  }
-   else {
-    console.log("no hay 6 doble, empieza jugador 1 con cualquier ficha");
-    this.player1.placeDominoInBoard(undefined,this.board,row1,col1,row2,col2);
+  if (this.player1.searchNumber(6,6)) {
+    console.log("empieza jugador 1");
+    dominoTaken=this.player1.playerTakeDomino(6,6);
+    this.player1.placeDominoInBoard(dominoTaken[0],this.board,row1,col1,row2,col2);
     $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
     $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
     $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
@@ -106,12 +72,66 @@ if (this.player1.searchNumber(6,6)) {
 
     this.player1.turn=false;
     this.player2.turn=true;
-    $('.namePlayer1').removeClass('turn');
     $('.namePlayer2').addClass('turn');
 
+  }
+    else if (this.player2.searchNumber(6,6)) {
+      console.log("empieza jugador 2");
+      this.player1.turn=false;
+      this.player2.turn=true;
+      $('.namePlayer2').addClass('turn');
+
+      dominotaken=this.player2.playerTakeDomino(6,6);
+      this.player2.placeDominoInBoard(dominotaken[0],this.board,row1,col1,row2,col2);
+      $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+      $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
+      $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+      $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
+      this.player2.updatePlayerDominoes();
+
+      this.player1.turn=true;
+      this.player2.turn=false;
+      $('.namePlayer2').removeClass('turn');
+      $('.namePlayer1').addClass('turn');
+
     }
+     else {
+      console.log("no hay 6 doble, empieza jugador 1 con cualquier ficha");
+      this.player1.placeDominoInBoard(undefined,this.board,row1,col1,row2,col2);
+      $('div[data-row="'+row1+'"][data-col="'+col1+'"]').addClass('domino');
+      $('div[data-row="'+row1+'"][data-col="'+col1+'"]').html(dominoBoard.domino[0].number1);
+      $('div[data-row="'+row2+'"][data-col="'+col2+'"]').addClass('domino');
+      $('div[data-row="'+row2+'"][data-col="'+col2+'"]').html(dominoBoard.domino[0].number2);
+      this.player1.updatePlayerDominoes();
+
+      this.player1.turn=false;
+      this.player2.turn=true;
+      $('.namePlayer1').removeClass('turn');
+      $('.namePlayer2').addClass('turn');
+
+      }
 
 };
+
+
+GameDomino.prototype.changeTurn=function(){
+
+  if (this.player2.turn===true){
+    this.player2.turn=false;
+    this.player1.turn=true;
+    $('.namePlayer2').removeClass('turn');
+    $('.namePlayer1').addClass('turn');
+  }
+
+  else if (this.player1.turn===true){
+    this.player1.turn=false;
+    this.player2.turn=true;
+    $('.namePlayer1').removeClass('turn');
+    $('.namePlayer2').addClass('turn');
+  }
+
+};
+
 
 /*a partir de ahora seria el desarrollo normal del juego*/
 //segun el turno jugador pone ficha en tabla en posicion central
@@ -135,7 +155,15 @@ GameDomino.prototype.makeTurn=function(){
         if (that.player2.searchNumber(num1,num2)){
             var dominoTakenP2=that.player2.playerTakeDomino(num1,num2);
             console.log("dominopillado: "+dominoTakenP2[0].number1+"|"+dominoTakenP2[0].number2);
+
         }
+        //this.board.placeNewDominoInBoard(dominoTakenP2);
+        that.player2.updatePlayerDominoes();
+        that.player2.turn=false;
+        that.player1.turn=true;
+        $('.namePlayer2').removeClass('turn');
+        $('.namePlayer1').addClass('turn');
+        //that.changeTurn(); //esta manera no vale
       });
     }
 
@@ -152,7 +180,15 @@ GameDomino.prototype.makeTurn=function(){
         if (that.player1.searchNumber(num1,num2)){
           var dominoTakenP1=that.player1.playerTakeDomino(num1,num2);
           console.log("dominopillado: "+dominoTakenP1[0].number1+"|"+dominoTakenP1[0].number2);
+
         }
+        //this.board.placeNewDominoInBoard(dominoTakenP1);
+        that.player1.updatePlayerDominoes();
+        that.player1.turn=false;
+        that.player2.turn=true;
+        $('.namePlayer1').removeClass('turn');
+        $('.namePlayer2').addClass('turn');
+        //that.changeTurn(); //esta nanera no vale.
       });
     }
 };
