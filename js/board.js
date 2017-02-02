@@ -51,24 +51,35 @@ function Board(options) {
 
 //FUNCTION NOT FULLY IMPLEMENTED!!!!!!!
 Board.prototype.placeNewDominoInBoard=function(dominoTaken){
+  console.log("funcion place new domino in board");
+  console.log(dominoTaken);
 
-  $('.dominoTokenP2').click(function(){
-    var posr1=$(this).attr("data-row");
-    var posc1=$(this).attr("data-col");
-    var posr2=posr1+1;
-    var posc2=posc1;
+  var posr1=0;
+  var posc1=0;
+  var posr2=0;
+  var posc2=0;
+  var that=this;
+
+  $('.cell-board').click(function(){
+    posr1=parseInt($(this).attr("data-row"));
+    posc1=parseInt($(this).attr("data-col"));
+    posr2=posr1+1;
+    posc2=posc1;
+    console.log(posr1+" "+posc1+" "+posr2+" "+posc2);
+    dominoTaken[0].number1Pos.row=posr1;
+    dominoTaken[0].number1Pos.column=posc1;
+    dominoTaken[0].number2Pos.row=posr2;
+    dominoTaken[0].number2Pos.column=posc2;
+    that.domino.unshift(dominoTaken[0]);
+    $('div[data-row="'+posr1+'"][data-col="'+posc1+'"]').addClass('domino');
+    $('div[data-row="'+posr1+'"][data-col="'+posc1+'"]').html(that.domino[0].number1);
+    $('div[data-row="'+posr2+'"][data-col="'+posc2+'"]').addClass('domino');
+    $('div[data-row="'+posr2+'"][data-col="'+posc2+'"]').html(that.domino[0].number2);
+
 
   });
 
-  dominoTaken.number1Pos.row=posr1;
-  dominoTaken.number1Pos.column=posc1;
-  dominoTaken.number2Pos.row=posr2;
-  dominoTaken.number2Pos.column=posc2;
-  this.domino.unshift(dominoTaken);
-  $('div[data-row="'+posr1+'"][data-col="'+posc1+'"]').addClass('domino');
-  $('div[data-row="'+posr1+'"][data-col="'+posc1+'"]').html(this.domino[0].number1);
-  $('div[data-row="'+posr2+'"][data-col="'+posc2+'"]').addClass('domino');
-  $('div[data-row="'+posr2+'"][data-col="'+posc2+'"]').html(this.domino[0].number1);
+
 
 };
 

@@ -152,12 +152,13 @@ GameDomino.prototype.makeTurn=function(){
         num1=parseInt($(this)[0].childNodes[0].innerHTML);
         num2=parseInt($(this)[0].childNodes[1].innerHTML);
         console.log("Domino selected by player2: "+num1+" | "+num2);
+        var dominoTakenP2;
         if (that.player2.searchNumber(num1,num2)){
-            var dominoTakenP2=that.player2.playerTakeDomino(num1,num2);
+            dominoTakenP2=that.player2.playerTakeDomino(num1,num2);
             console.log("dominopillado: "+dominoTakenP2[0].number1+"|"+dominoTakenP2[0].number2);
 
         }
-        //this.board.placeNewDominoInBoard(dominoTakenP2);
+        that.board.placeNewDominoInBoard(dominoTakenP2);
         that.player2.updatePlayerDominoes();
         that.player2.turn=false;
         that.player1.turn=true;
@@ -177,12 +178,13 @@ GameDomino.prototype.makeTurn=function(){
         num1=parseInt($(this)[0].childNodes[0].innerHTML);
         num2=parseInt($(this)[0].childNodes[1].innerHTML);
         console.log("Domino selected: by player1 "+num1+" | "+num2);
+        var dominoTakenP1;
         if (that.player1.searchNumber(num1,num2)){
-          var dominoTakenP1=that.player1.playerTakeDomino(num1,num2);
+          dominoTakenP1=that.player1.playerTakeDomino(num1,num2);
           console.log("dominopillado: "+dominoTakenP1[0].number1+"|"+dominoTakenP1[0].number2);
 
         }
-        //this.board.placeNewDominoInBoard(dominoTakenP1);
+        that.board.placeNewDominoInBoard(dominoTakenP1);
         that.player1.updatePlayerDominoes();
         that.player1.turn=false;
         that.player2.turn=true;
