@@ -1,6 +1,5 @@
 DOMINO
 
-with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
 
 Se ha empleado fundamentalmente JavaScript y jQuery. Sobre una estructura DOM en HTML y formatos CSS
 
